@@ -1,6 +1,11 @@
 package study.studyProject;
 
 class ParentConstructor extends Object {
+
+    {
+        System.out.println("parent init");
+    }
+
     ParentConstructor () {
         //super();
         System.out.println("Default Parent Constructor");
@@ -13,6 +18,11 @@ class ParentConstructor extends Object {
 }
 
 public class Constructor extends ParentConstructor {
+
+    {
+        System.out.println("child init");
+    }
+
     Constructor () {
         //super(5);
         System.out.println("Constructor");
