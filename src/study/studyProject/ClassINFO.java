@@ -13,6 +13,8 @@ public class ClassINFO {
     int[][] arr2 = new int[][] {{1, 2}, {1, 2}};
     // int[] arr3[][];
 
+    int a = (2 > 1) ? 2 : 1;
+
     Object[] masObject = new Object[10]; // null
     int[] mas = new int[10]; // 0
     int[][] masTD = new int[10][];
