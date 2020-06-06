@@ -1,5 +1,9 @@
 package study.studyProject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ClassINFO {
@@ -57,7 +61,27 @@ public class ClassINFO {
     }
     /*...............................................................................................................*/
 
-    public static void main(String[] args) {
-        System.out.println(new ClassINFO().str1);
+    public static void main(String[] args) throws Exception{
+        //System.out.println(new ClassINFO().str1);
+
+        Date date = new Date();
+        System.out.println(date);
+
+        Calendar calendar = Calendar.getInstance(); // конструктор приватный
+        calendar.setTime(date);
+        System.out.println(calendar);
+        System.out.println(calendar.getTime());
+        calendar.add(Calendar.WEEK_OF_MONTH, 1);
+        System.out.println(calendar.getTime());
+
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+        System.out.println(dateFormat.format(calendar.getTime()));
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy/D HH:mm");
+        System.out.println(simpleDateFormat.format(calendar.getTime()));
+
+        SimpleDateFormat newSimpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date newDate = newSimpleDateFormat.parse("01/05/1987");
+        System.out.println(newDate);
     }
 }
