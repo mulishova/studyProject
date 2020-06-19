@@ -57,6 +57,21 @@ public class Collections {
             System.out.println(o);
         }
 
+        //Set sortSet = new TreeSet(); // отсортированный
+        Set sortSet = new TreeSet(new ComparePerson());
+        sortSet.add(new Person(8));
+        sortSet.add(new Person(1));
+        sortSet.add(new Person(5));
+        for (Object o : sortSet) {
+            System.out.println(o);
+        }
+
+        Set<Person> set2 = new TreeSet<>(Comparator.comparingInt(Person::getAge));
+        set2.add(new Person(100));
+        set2.add(new Person(101));
+        set2.add(new Person(99));
+        set2.forEach(System.out::println);
+
         System.out.println("Map");
         Map map = new HashMap();
         map.put("1", new Books("The adventures of Sherlock Holmes"));
@@ -70,7 +85,7 @@ public class Collections {
     }
 }
 
-class Books {
+class Books { // map
     String name;
 
     public Books(String name) {
@@ -82,5 +97,40 @@ class Books {
         return "Books{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+}
+
+class Person /*implements Comparable<Person>*/ { // treeSet
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Person(int age) {
+        this.age = age;
+    }
+
+    /*@Override
+    public int compareTo(Person p) {
+        return this.age - p.age;
+    }*/
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "age=" + age +
+                '}';
+    }
+}
+
+class ComparePerson implements Comparator<Person> { // если нет доступа к Person
+    @Override
+    public int compare(Person o1, Person o2) {
+        return o1.getAge() - o2.getAge();
     }
 }
