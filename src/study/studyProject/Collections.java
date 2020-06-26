@@ -25,7 +25,9 @@ public class Collections {
         }
 
         System.out.println("List");
-        List collectionList = new ArrayList(); // на основе индексов
+        List collectionList = new ArrayList(); // на основе индексов (по сути массив, может увеличивать размерность, каждый раз на 50% от текущей)
+        List vectorList = new Vector(); // как и ArrayList, но все методы synchronized
+        List linkedList = new LinkedList(); // хранит ссылку на след/предыдущ элементы, удобно использовать в очередях и стеках
         collectionList.add("1");
         collectionList.add("2");
         collectionList.add("3");
@@ -36,7 +38,8 @@ public class Collections {
         }
 
         System.out.println("Queue");
-        Queue collectionQueue = new PriorityQueue();
+        Queue collectionQueue = new PriorityQueue(); // отсортированная
+        Queue linkedQueue = new LinkedList();
         collectionQueue.add("1");
         collectionQueue.offer("2");
         collectionQueue.offer("3");
@@ -47,7 +50,7 @@ public class Collections {
         System.out.println("N = " + collectionQueue.size());
 
         System.out.println("Set");
-        Set collectionSet = new HashSet(); // только уникальные объекты
+        Set collectionSet = new HashSet(); // только уникальные объекты, как набор ключей map, неупорядоченная - данные выводятся случайным образом
         collectionSet.add("1");
         collectionSet.add("2");
         collectionSet.add("3");
@@ -57,7 +60,9 @@ public class Collections {
             System.out.println(o);
         }
 
-        //Set sortSet = new TreeSet(); // отсортированный
+        Set linkedSet = new LinkedHashSet(); // упорядоченная, на основе linkedHashMap
+
+        //Set sortSet = new TreeSet(); // отсортированный, на основе TreeMap
         Set sortSet = new TreeSet(new ComparePerson());
         sortSet.add(new Person(8));
         sortSet.add(new Person(1));
@@ -73,7 +78,10 @@ public class Collections {
         set2.forEach(System.out::println);
 
         System.out.println("Map");
-        Map map = new HashMap();
+        Map map = new HashMap(); // всё хранится в массиве Node (хэш, ключ, начение, next), хранит объекты на основании хэша, последовательность вывода случайна - зависит от сформированного хэша
+        Map map2 = new Hashtable(); // как и HashMap, но все методы synchronized
+        Map map3 = new LinkedHashMap(); // порядок вывода гарантирован, усть ссылки на след и предыдущ элементы
+        Map map4 = new TreeMap(); // отсортированный, красно-черное дерево
         map.put("1", new Books("The adventures of Sherlock Holmes"));
         map.put("2", new Books("A Game of Thrones"));
         map.put("3", new Books("The Thorn Birds"));
